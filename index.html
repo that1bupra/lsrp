@@ -7,7 +7,7 @@
     <title>LSRP | Leo's Roleplay Server</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        /* global palette: #579cff (primary blue), #d3e7ff (soft light blue) */
+        /* global palette: #024513 (primary green), #197a32 (soft light green) */
         * {
             margin: 0;
             padding: 0;
@@ -16,7 +16,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0b1a33, #10233f, #0f2b4a);
+            background: linear-gradient(135deg, #024513, #024513, #197a32);
             color: #fff;
             line-height: 1.6;
             overflow-x: hidden;
@@ -672,29 +672,29 @@
             </div>
             <div class="feature">
                 <i class="fas fa-shield-alt"></i>
-                <h4>Safe Environment</h4>
+                <h4>Friendly Staff</h4>
             </div>
             <div class="feature">
                 <i class="fas fa-trophy"></i>
-                <h4>Frequent Giveaways</h4>
+                <h4>Weekly Giveaways</h4>
             </div>
             <div class="feature">
                 <i class="fas fa-calendar-week"></i>
-                <h4>Weekly SRP's</h4>
+                <h4>1 SRP Per Week</h4>
             </div>
             <div class="feature">
                 <i class="fas fa-microphone"></i>
-                <h4>Voice Chat</h4>
+                <h4>Allow's VC</h4>
             </div>
         </div>
     </div>
 </section>
 
     <footer>
-        <p>© 2026 Greenville Roleplay Urban™. All rights reserved.</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(211,231,255,0.6);">🐬 A premium roleplay experience</p>
+        <p>© All rights reserved to Leo's Roleplay Server</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(211,231,255,0.6);">The best roleplay experience you will ever get!</p>
         <a href="/admin.html" class="footer-link">
-            <i class="fas fa-crown"></i> Ownership Access
+            <i class="fas fa-crown"></i> Ownership Portal (WIP)
         </a>
     </footer>
 
@@ -732,18 +732,18 @@
                 if (data.bio) {
                     document.getElementById('botBio').textContent = data.bio;
                 } else {
-                    document.getElementById('botBio').textContent = 'I help manage the GVRPU community!';
+                    document.getElementById('botBio').textContent = 'Helps to manage Leo's ROleplay Server';
                 }
                 
                 if (data.avatar) {
                     document.getElementById('botAvatar').src = data.avatar;
                 } else {
-                    document.getElementById('botAvatar').src = 'https://cdn.discordapp.com/embed/avatars/0.png';
+                    document.getElementById('botAvatar').src = 'https://cdn.discordapp.com/attachments/1465748929713803457/1483504186472661115/Screenshot_2026-03-02_at_21.21.41-modified.png?ex=69bad470&is=69b982f0&hm=f28e35bc9e3e429182534ba072795825a971089875a95f388367f65dca69272d';
                 }
             } catch (error) {
-                document.getElementById('botName').textContent = 'GVRPU Bot';
-                document.getElementById('botBio').textContent = 'Community management bot for GVRPU';
-                document.getElementById('botAvatar').src = 'https://cdn.discordapp.com/embed/avatars/0.png';
+                document.getElementById('botName').textContent = 'LSRP Bot';
+                document.getElementById('botBio').textContent = 'Manages servers systems';
+                document.getElementById('botAvatar').src = 'https://cdn.discordapp.com/attachments/1465748929713803457/1483504186472661115/Screenshot_2026-03-02_at_21.21.41-modified.png?ex=69bad470&is=69b982f0&hm=f28e35bc9e3e429182534ba072795825a971089875a95f388367f65dca69272d';
             }
         }
 
