@@ -1,96 +1,809 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GVRPU | Greenville Roleplay Urban</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        /* global palette: #579cff (primary blue), #d3e7ff (soft light blue) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0b1a33, #10233f, #0f2b4a);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar.scrolled {
+            padding: 1rem 2rem;
+            background: rgba(0, 8, 20, 0.9);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #579cff, #d3e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(87, 156, 255, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #579cff, #d3e7ff);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(87,156,255,0.15) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #579cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stats-section {
+            padding: 5rem 2rem;
+            background: rgba(0, 10, 25, 0.5);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(87,156,255,0.25);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .stat-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .stat-card i {
+            font-size: 3rem;
+            color: #579cff;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+        }
+
+        .bot-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(87,156,255,0.1), rgba(0,20,40,0.6));
+            text-align: center;
+        }
+
+        .bot-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .bot-card {
+            background: rgba(0, 15, 30, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(87,156,255,0.4);
+            border-radius: 30px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 20px 40px rgba(0,30,60,0.6);
+            transition: transform 0.3s ease, border-color 0.3s;
+        }
+
+        .bot-card:hover {
+            transform: translateY(-10px);
+            border-color: #579cff;
+        }
+
+        .bot-avatar-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .bot-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid #579cff;
+            object-fit: cover;
+            background: #113355;
+            transition: all 0.3s ease;
+        }
+
+        .bot-status {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            background: #43b581;
+            border: 3px solid #0b1a33;
+            border-radius: 50%;
+        }
+
+        .bot-name {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #fff, #579cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bot-bio {
+            color: #d3e7ff;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+            line-height: 1.8;
+        }
+
+        .bot-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(87,156,255,0.2);
+            border: 1px solid #579cff;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #d3e7ff;
+        }
+
+        .bot-badge i {
+            margin-right: 0.5rem;
+            color: #579cff;
+        }
+
+        .community-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #579cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #b0d0f0;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .link-card {
+            background: rgba(0, 20, 40, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(87,156,255,0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            border-color: #579cff;
+            box-shadow: 0 10px 30px rgba(87,156,255,0.3);
+        }
+
+        .link-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #579cff, #d3e7ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #0b1a33;
+        }
+
+        .link-card h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .link-card p {
+            color: rgba(211,231,255,0.8);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .link-card .btn-small {
+            background: rgba(87,156,255,0.2);
+            color: #d3e7ff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .link-card:hover .btn-small {
+            background: #579cff;
+            color: #0b1a33;
+            border-color: #d3e7ff;
+        }
+
+        .team-section {
+            padding: 5rem 2rem;
+            background: rgba(87,156,255,0.05);
+            border-top: 1px solid rgba(87,156,255,0.3);
+            border-bottom: 1px solid rgba(87,156,255,0.3);
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: rgba(0, 20, 40, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(87,156,255,0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateX(5px);
+            border-color: #579cff;
+            background: rgba(87,156,255,0.1);
+        }
+
+        .team-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #579cff, #d3e7ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #0b1a33;
+            font-weight: bold;
+        }
+
+        .team-info {
+            flex: 1;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #d3e7ff;
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            color: #579cff;
+            font-size: 0.9rem;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            background: rgba(87,156,255,0.15);
+            border-radius: 50px;
+        }
+
+        .team-founder {
+            color: #ffdb7e;
+            border: 1px solid #ffdb7e;
+            background: rgba(255,215,0,0.1);
+        }
+
+        .about-section {
+            padding: 5rem 2rem;
+            background: rgba(0, 15, 30, 0.7);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            color: #e2f0ff;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            padding: 1rem;
+            background: rgba(87,156,255,0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(87,156,255,0.3);
+        }
+
+        .feature i {
+            color: #579cff;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature h4 {
+            color: #d3e7ff;
+        }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(0, 8, 20, 0.8);
+            border-top: 1px solid rgba(87,156,255,0.3);
+        }
+
+        .footer-link {
+            color: #579cff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #d3e7ff;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .bot-avatar-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .team-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">GVRPU 🐬</div> <!-- subtle wave to match blue theme -->
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#bot">Our Bot</a>
+            <a href="#community">Community Links</a>
+            <a href="#team">Ownership Team</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Greenville Roleplay Urban</h1>
+            <p>Experience the ultimate roleplay community in Greenville</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#community" style="text-decoration: none;">
+                    <button style="padding: 1rem 2rem; font-size: 1.1rem; background: linear-gradient(45deg, #579cff, #d3e7ff); border: none; color: #0b1a33; border-radius: 50px; cursor: pointer; transition: transform 0.3s; font-weight: bold;">
+                        Explore Community <i class="fas fa-arrow-down" style="margin-left: 0.5rem;"></i>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section" id="stats">
+        <div class="stats-container">
+            <div class="stat-card" id="stat1">
+                <i class="fas fa-users"></i>
+                <div class="stat-number">1,500+</div>
+                <div class="stat-label">Community Members</div>
+            </div>
+            <div class="stat-card" id="stat2">
+                <i class="fas fa-gamepad"></i>
+                <div class="stat-number">Active</div>
+                <div class="stat-label">Daily Sessions</div>
+            </div>
+            <div class="stat-card" id="stat3">
+                <i class="fas fa-calendar"></i>
+                <div class="stat-number">2024</div>
+                <div class="stat-label">Established</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bot-section" id="bot">
+        <h2 class="section-title">🤖 Meet Our Bot</h2>
+        <div class="bot-container">
+            <div class="bot-card" id="botCard">
+                <div class="bot-avatar-container">
+                    <img src="" alt="Bot Avatar" class="bot-avatar" id="botAvatar">
+                    <div class="bot-status"></div>
+                </div>
+                <h3 class="bot-name" id="botName">Loading...</h3>
+                <p class="bot-bio" id="botBio">Fetching bot information...</p>
+                <div class="bot-badge">
+                    <i class="fas fa-robot"></i> Community Assistant
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="community-section" id="community">
+        <h2 class="section-title">🔗 Community Links</h2>
+        <p class="section-subtitle">Important links for our community</p>
+        
+        <div class="links-grid">
+            <a href="https://discord.gg/gvrpu" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fab fa-discord"></i></div>
+                <h3>Discord Server</h3>
+                <p>Join our active community hub</p>
+                <span class="btn-small">Connect →</span>
+            </a>
+
+            <a href="https://www.roblox.com/communities/696103392/Greenville-Roleplay-Urban-GVRPU#!/about" target="_blank" class="link-card">
+                <div class="link-icon" style="font-weight: bold; font-size: 1.4rem;">RBLX</div>
+                <h3>Roblox Group</h3>
+                <p>Stay updated in-game</p>
+                <span class="btn-small">Join →</span>
+            </a>
+
+            <a href="https://docs.google.com/document/d/1f8jXqVspME00cM0PNT89e2-1ngfh9GHXfrkLnDX05Yk/edit?tab=t.0" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fas fa-car"></i></div>
+                <h3>Restricted Vehicles</h3>
+                <p>View the official vehicle restrictions</p>
+                <span class="btn-small">View List →</span>
+            </a>
+
+            <a href="https://discord.com/channels/1312267385784242286/1460410884395630835" target="_blank" class="link-card">
+                <div class="link-icon"><i class="fas fa-gavel"></i></div>
+                <h3>Regulations</h3>
+                <p>Server rules & guidelines</p>
+                <span class="btn-small">Read →</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="team-section" id="team">
+        <h2 class="section-title">👑 Meet Our Ownership Team</h2>
+        <p class="section-subtitle">The leaders behind GVRPU</p>
+        
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">U</div>
+                <div class="team-info">
+                    <div class="team-name">urubuqueima</div>
+                    <div class="team-role team-founder">Server Executive/Founder</div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">L</div>
+                <div class="team-info">
+                    <div class="team-name">lastsiah4u</div>
+                    <div class="team-role">Server Executive</div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">G</div>
+                <div class="team-info">
+                    <div class="team-name">gv.lxis</div>
+                    <div class="team-role">Assistant Executive</div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">L</div>
+                <div class="team-info">
+                    <div class="team-name">licenseau</div>
+                    <div class="team-role">Assistant Executive</div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">Z</div>
+                <div class="team-info">
+                    <div class="team-name">theyluv.zain</div>
+                    <div class="team-role">Associate Executive</div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">N</div>
+                <div class="team-info">
+                    <div class="team-name">noa568</div>
+                    <div class="team-role">Assistant Executive</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="about-section" id="about">
+    <div class="about-content">
+        <h2 class="section-title">About GVRPU</h2>
+        <p>Greenville Roleplay Urban™ is a community that strives to host active & immersive roleplay sessions in the roblox game 'Greenville'. Within this community we offer; frequent giveaways, active sessions, and weekly SRP's! Whether you're into serious roleplay, casual fun, or making new friends, our community is right for you!</p>
+        
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-user-tie"></i>
+                <h4>Active Staff</h4>
+            </div>
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Safe Environment</h4>
+            </div>
+            <div class="feature">
+                <i class="fas fa-trophy"></i>
+                <h4>Frequent Giveaways</h4>
+            </div>
+            <div class="feature">
+                <i class="fas fa-calendar-week"></i>
+                <h4>Weekly SRP's</h4>
+            </div>
+            <div class="feature">
+                <i class="fas fa-microphone"></i>
+                <h4>Voice Chat</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <p>© 2026 Greenville Roleplay Urban™. All rights reserved.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(211,231,255,0.6);">🐬 A premium roleplay experience</p>
+        <a href="/admin.html" class="footer-link">
+            <i class="fas fa-crown"></i> Ownership Access
+        </a>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        function checkStats() {
+            const stats = document.querySelectorAll('.stat-card');
+            stats.forEach(stat => {
+                const statTop = stat.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (statTop < windowHeight - 100) {
+                    stat.classList.add('visible');
+                }
+            });
+        }
+
+        async function loadBotInfo() {
+            try {
+                const response = await fetch('/api/update-bot?action=get');
+                const data = await response.json();
+                
+                if (data.username) {
+                    document.getElementById('botName').textContent = data.username;
+                }
+                
+                if (data.bio) {
+                    document.getElementById('botBio').textContent = data.bio;
+                } else {
+                    document.getElementById('botBio').textContent = 'I help manage the GVRPU community!';
+                }
+                
+                if (data.avatar) {
+                    document.getElementById('botAvatar').src = data.avatar;
+                } else {
+                    document.getElementById('botAvatar').src = 'https://cdn.discordapp.com/embed/avatars/0.png';
+                }
+            } catch (error) {
+                document.getElementById('botName').textContent = 'GVRPU Bot';
+                document.getElementById('botBio').textContent = 'Community management bot for GVRPU';
+                document.getElementById('botAvatar').src = 'https://cdn.discordapp.com/embed/avatars/0.png';
+            }
+        }
+
+        window.addEventListener('load', () => {
+            checkStats();
+            loadBotInfo();
+        });
+        
+        window.addEventListener('scroll', checkStats);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+
+        setInterval(loadBotInfo, 30000);
+    </script>
+</body>
 </html>
